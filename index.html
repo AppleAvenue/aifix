@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sole Theory - EVERY STEP TELLS A STORY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#home">SOLE THEORY</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link">HOME</a></li>
+          <li><a href="#sneakers" class="nav-link">SNEAKERS</a></li>
+          <li><a href="#clothing" class="nav-link">CLOTHING</a></li>
+          <li><a href="#exclusives" class="nav-link">EXCLUSIVES</a></li>
+          <li><a href="#about" class="nav-link">ABOUT US</a></li>
+          <li><a href="#support" class="nav-link">SUPPORT</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+            <button class="search-btn" id="searchBtn">🔍</button>
+          </div>
+          <button class="cart-btn" id="cartBtn">
+            <span class="cart-icon">🛒</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section id="home" class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">SOLE THEORY</h1>
+          <p class="hero-subtitle">Where Street Meets Elite</p>
+          <button class="cta-btn" onclick="document.getElementById('sneakers').scrollIntoView({behavior: 'smooth'})">
+            SHOP NOW
+          </button>
+        </div>
+        <div class="hero-bg"></div>
+      </section>
+
+      <section class="featured-banner">
+        <div class="banner-content">
+          <span class="banner-tag">40 Percent Off!</span>
+          <p class="banner-text">Black Friday Sale</p>
+        </div>
+      </section>
+
+      <section id="sneakers" class="sneakers-section">
+        <div class="section-header">
+          <h2>PREMIUM COLLECTION</h2>
+          <p>Curated selection of the hottest streetwear sneakers</p>
+        </div>
+        <div class="products-grid" id="productsGrid"></div>
+      </section>
+
+      <section id="clothing" class="clothing-section">
+        <div class="section-header">
+          <h2>STREETWEAR ESSENTIALS</h2>
+          <p>Complete your look with premium apparel</p>
+        </div>
+        <div class="clothing-grid">
+          <div class="clothing-item">
+            <div class="clothing-img" style="background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);">
+              <span class="clothing-label">CLOTHING</span>
+            </div>
+            <h3>Premium Streetwear</h3>
+            <p>From R 1,999.95</p>
+            <small style="opacity: 0.7;">Essentials, Rhude, Denim Tears, North Face</small>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-img" style="background: linear-gradient(135deg, #2a2a2a 0%, #444 100%);">
+              <span class="clothing-label">FOOTBALL JERSEYS </span>
+            </div>
+            <h3>Football Jerseys</h3>
+            <p>From R 599.00</p>
+            <small style="opacity: 0.7;">Man United, Arsenal, Real Madrid & More</small>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-img" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);">
+              <span class="clothing-label">TECH FLEECE</span>
+            </div>
+            <h3>Nike Tech Fleece</h3>
+            <p>From R 2,399.95</p>
+            <small style="opacity: 0.7;">NIKE, CORTEIZ, SYNA</small>
+          </div>
+          <div class="clothing-item">
+            <div class="clothing-img" style="background: linear-gradient(135deg, #333 0%, #1a1a1a 100%);">
+              <span class="clothing-label">FITTED CAPS</span>
+            </div>
+            <h3>New Era 59FIFTY</h3>
+            <p>From R 499.95</p>
+            <small style="opacity: 0.7;">LA, NYC, SOX</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="exclusives" class="exclusives-section">
+        <div class="section-header">
+          <h2>NBA EXCLUSIVES</h2>
+          <p>Premium NBA jerseys from your favorite teams</p>
+        </div>
+        <div class="products-grid" id="nbaExclusivesGrid"></div>
+      </section>
+
+      <section id="ai-fitting" class="ai-fitting-section">
+        <div class="section-header">
+          <h2>🤖 AI VIRTUAL FITTING ROOM</h2>
+          <p>See how our products look on you with AI-powered visualization</p>
+        </div>
+        <div class="fitting-room-content">
+          <div class="fitting-demo">
+            <div class="demo-placeholder">
+              <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+                <circle cx="100" cy="60" r="30" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                <path d="M70 100 L100 90 L130 100 L130 160 L70 160 Z" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+                <line x1="100" y1="90" x2="100" y2="160" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                <line x1="70" y1="130" x2="50" y2="170" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+                <line x1="130" y1="130" x2="150" y2="170" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+              </svg>
+              <p>AI Model Visualization</p>
+            </div>
+            <div class="fitting-features">
+              <div class="feature-item">
+                <div class="feature-icon">📸</div>
+                <h4>Upload Your Photo</h4>
+                <p>Take or upload a photo to see how products look on you</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">👕</div>
+                <h4>Try On Virtually</h4>
+                <p>See realistic visualizations of sneakers, jerseys, and apparel</p>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <h4>AI Recommendations</h4>
+                <p>Get personalized style suggestions based on your preferences</p>
+              </div>
+            </div>
+          </div>
+          <button class="cta-btn fitting-cta">COMING SOON</button>
+          <p class="fitting-note">AI Virtual Fitting Room powered by advanced machine learning will be available soon!</p>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="about-content">
+          <h2>ABOUT SOLE THEORY</h2>
+          <p>We're more than just a sneaker store. Sole Theory is a lifestyle brand dedicated to bringing you the most sought-after streetwear sneakers and apparel. Our mission is to provide authentic, premium products that define modern street culture.</p>
+          <p>From classic silhouettes to the latest drops, we curate only the best for our community. Every pair tells a story, and we're here to help you write yours.</p>
+          <div class="about-values">
+            <div class="value-item">
+              <h3>AUTHENTIC</h3>
+              <p>100% genuine products</p>
+            </div>
+            <div class="value-item">
+              <h3>CURATED</h3>
+              <p>Hand-picked selection</p>
+            </div>
+            <div class="value-item">
+              <h3>EXCLUSIVE</h3>
+              <p>Limited edition drops</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="support" class="support-section">
+        <div class="support-content">
+          <h2>GET IN TOUCH</h2>
+          <p>Have questions? We're here to help.</p>
+          <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit" class="submit-btn">SEND MESSAGE</button>
+          </form>
+          <div class="contact-info">
+            <p><strong>Email:</strong> Soletheoryhub@gmail.com</p>
+            <p><strong>Hours:</strong> Mon-Fri 9AM-6PM </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="newsletter-section">
+        <div class="newsletter-content">
+          <h3>JOIN THE THEORY</h3>
+          <p>Get exclusive access to new drops and special offers</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">SUBSCRIBE</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <h3>SOLE THEORY</h3>
+          <p>Where Street Meets Elite</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#home">Home</a>
+          <a href="#sneakers">Sneakers</a>
+          <a href="#clothing">Clothing</a>
+          <a href="#about">About</a>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="social-link">Instagram</a>
+            <a href="https://www.tiktok.com/@soletheory.za" class="social-link">TikTok</a>
+            <a href="https://wa.me/27687777190" class="social-link">Whatsapp</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sole Theory. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3>YOUR CART</h3>
+        <button class="cart-close" id="cartClose">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <p class="empty-cart">Your cart is empty</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>TOTAL:</span>
+          <span id="cartTotal">R 0.00</span>
+        </div>
+        <button class="checkout-btn">CHECKOUT</button>
+      </div>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="search-results-overlay" id="searchResultsOverlay"></div>
+    <div class="search-results-panel" id="searchResultsPanel">
+      <div class="search-results-header">
+        <h3>SEARCH RESULTS</h3>
+        <button class="search-close" id="searchClose">&times;</button>
+      </div>
+      <div class="search-results-content" id="searchResultsContent">
+        <p class="no-results">Start typing to search...</p>
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
