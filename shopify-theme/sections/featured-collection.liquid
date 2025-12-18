@@ -1,0 +1,101 @@
+{% liquid
+  assign collection = collections[section.settings.collection]
+  assign products_limit = section.settings.products_limit
+%}
+
+<section class="sneakers-section" data-section-id="{{ section.id }}">
+  <div class="section-header">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="products-grid">
+    {% if collection.products.size > 0 %}
+      {% for product in collection.products limit: products_limit %}
+        <div class="product-card">
+          <a href="{{ product.url }}" class="product-image">
+            {% if product.featured_image %}
+              <img
+                src="{{ product.featured_image | image_url: width: 600 }}"
+                alt="{{ product.featured_image.alt | escape }}"
+                loading="lazy"
+                width="600"
+                height="600"
+              >
+            {% else %}
+              <div class="placeholder-image">
+                <span class="placeholder-text">NO IMAGE</span>
+              </div>
+            {% endif %}
+          </a>
+
+          <div class="product-info">
+            <h3 class="product-name">{{ product.title }}</h3>
+            <p class="product-price">{{ product.price | money }}</p>
+
+            <button
+              class="add-to-cart"
+              data-product-id="{{ product.id }}"
+              data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+            >
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No products in this collection.</p>
+    {% endif %}
+  </div>
+
+  {% if section.settings.show_view_all and collection.products.size > products_limit %}
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="{{ collection.url }}" class="cta-btn">VIEW ALL</a>
+    </div>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "PREMIUM COLLECTION"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Curated selection of the hottest streetwear"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Number of products to show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' button",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,137 @@
+<div class="product-detail-page">
+  <div class="product-detail-container">
+    <a href="{{ collections.all.url }}" class="back-btn">
+      ← BACK TO SHOP
+    </a>
+
+    <div style="grid-column: 1 / -1;">
+      <div class="product-detail-container">
+        <div class="product-detail-image">
+          {% if product.featured_image %}
+            <img
+              src="{{ product.featured_image | image_url: width: 800 }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              id="productImage"
+            >
+          {% else %}
+            <div class="placeholder-image">
+              <span class="placeholder-text">NO IMAGE</span>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="product-detail-info">
+          <h1>{{ product.title }}</h1>
+          <p class="product-detail-price" id="productPrice">
+            {{ product.selected_or_first_available_variant.price | money }}
+          </p>
+
+          {% if product.description != blank %}
+            <div class="product-description">
+              {{ product.description }}
+            </div>
+          {% endif %}
+
+          {% form 'product', product, id: 'product-form' %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+            {% unless product.has_only_default_variant %}
+              {% for option in product.options_with_values %}
+                <div class="{% if option.name == 'Color' %}color-selector{% elsif option.name == 'Size' %}size-selector{% else %}option-selector{% endif %}">
+                  <h3>{{ option.name }}</h3>
+
+                  {% if option.name == 'Color' %}
+                    <div class="color-options">
+                      {% for value in option.values %}
+                        <button
+                          type="button"
+                          class="color-btn {% if forloop.first %}active{% endif %}"
+                          data-option-index="{{ option.position }}"
+                          data-value="{{ value }}"
+                          style="background-color: {{ value | handleize }};"
+                          aria-label="Select color {{ value }}"
+                        ></button>
+                      {% endfor %}
+                    </div>
+                  {% elsif option.name == 'Size' %}
+                    <div class="size-options">
+                      {% for value in option.values %}
+                        <button
+                          type="button"
+                          class="size-btn {% if forloop.first %}active{% endif %}"
+                          data-option-index="{{ option.position }}"
+                          data-value="{{ value }}"
+                        >
+                          {{ value }}
+                        </button>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    <select name="options[{{ option.name }}]">
+                      {% for value in option.values %}
+                        <option value="{{ value }}">{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            {% endunless %}
+
+            <button
+              type="submit"
+              name="add"
+              class="checkout-detail-btn"
+              {% unless product.available %}disabled{% endunless %}
+            >
+              {% if product.available %}
+                ADD TO CART
+              {% else %}
+                SOLD OUT
+              {% endif %}
+            </button>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('product-form');
+  const colorBtns = document.querySelectorAll('.color-btn');
+  const sizeBtns = document.querySelectorAll('.size-btn');
+
+  colorBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      colorBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      updateVariant();
+    });
+  });
+
+  sizeBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      sizeBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      updateVariant();
+    });
+  });
+
+  function updateVariant() {
+    const selectedOptions = [];
+    document.querySelectorAll('.color-btn.active, .size-btn.active').forEach(btn => {
+      selectedOptions[btn.dataset.optionIndex - 1] = btn.dataset.value;
+    });
+
+    const variant = {{ product.variants | json }}.find(v => {
+      return v.options.every((opt, idx) => !selectedOptions[idx] || opt === selectedOptions[idx]);
+    });
+
+    if (variant) {
+      form.querySelector('input[name="id"]').value = variant.id;
+      document.getElementById('productPrice').textContent = Shopify.formatMoney(variant.price);
+    }
+  }
+});
+</script>

@@ -1,0 +1,87 @@
+<footer class="footer" data-section-id="{{ section.id }}">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h3>{{ section.settings.brand_name }}</h3>
+      <p>{{ section.settings.tagline }}</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>{{ section.settings.links_title }}</h4>
+      {% for link in linklists[section.settings.footer_menu].links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </div>
+
+    <div class="footer-social">
+      <h4>{{ section.settings.social_title }}</h4>
+      <div class="social-links">
+        {% if section.settings.instagram_url != blank %}
+          <a href="{{ section.settings.instagram_url }}" class="social-link" target="_blank">Instagram</a>
+        {% endif %}
+        {% if section.settings.tiktok_url != blank %}
+          <a href="{{ section.settings.tiktok_url }}" class="social-link" target="_blank">TikTok</a>
+        {% endif %}
+        {% if section.settings.whatsapp_url != blank %}
+          <a href="{{ section.settings.whatsapp_url }}" class="social-link" target="_blank">WhatsApp</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. All rights reserved.</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand Name",
+      "default": "SOLE THEORY"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Where Street Meets Elite"
+    },
+    {
+      "type": "text",
+      "id": "links_title",
+      "label": "Links Section Title",
+      "default": "Quick Links"
+    },
+    {
+      "type": "link_list",
+      "id": "footer_menu",
+      "label": "Footer Menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "social_title",
+      "label": "Social Section Title",
+      "default": "Follow Us"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_url",
+      "label": "WhatsApp URL"
+    }
+  ]
+}
+{% endschema %}

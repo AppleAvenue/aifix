@@ -1,0 +1,48 @@
+<section class="hero-section" data-section-id="{{ section.id }}">
+  <div class="hero-content">
+    <h1 class="hero-title">{{ section.settings.title }}</h1>
+    <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_link }}" class="cta-btn">
+        {{ section.settings.button_text }}
+      </a>
+    {% endif %}
+  </div>
+  <div class="hero-bg"></div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "SOLE THEORY"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Where Street Meets Elite"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}

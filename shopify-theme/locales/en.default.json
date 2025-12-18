@@ -1,0 +1,38 @@
+{
+  "general": {
+    "search": {
+      "placeholder": "Search products...",
+      "submit": "Search"
+    },
+    "cart": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty",
+      "total": "Total",
+      "checkout": "Checkout",
+      "remove": "Remove",
+      "quantity": "Qty"
+    },
+    "navigation": {
+      "back_to_shop": "Back to Shop",
+      "back_to_home": "Back to Home"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "price": "Price",
+      "select_options": "Select Options"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_products": "No products found in this collection"
+    }
+  },
+  "newsletter": {
+    "success": "Thanks for subscribing!",
+    "placeholder": "Enter your email",
+    "button": "Subscribe"
+  }
+}

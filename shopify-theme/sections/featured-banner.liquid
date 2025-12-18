@@ -1,0 +1,31 @@
+<section class="featured-banner" data-section-id="{{ section.id }}">
+  <div class="banner-content">
+    <span class="banner-tag">{{ section.settings.tag_text }}</span>
+    <p class="banner-text">{{ section.settings.main_text }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text",
+      "default": "New Drop"
+    },
+    {
+      "type": "text",
+      "id": "main_text",
+      "label": "Main Text",
+      "default": "Limited Edition Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Banner"
+    }
+  ]
+}
+{% endschema %}

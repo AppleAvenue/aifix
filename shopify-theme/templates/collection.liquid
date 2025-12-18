@@ -1,0 +1,76 @@
+{% paginate collection.products by 12 %}
+
+<div class="clothing-category-page">
+  <div class="product-detail-container">
+    <a href="/" class="back-btn">
+      ← BACK TO HOME
+    </a>
+
+    <div style="grid-column: 1 / -1;">
+      <div class="section-header">
+        <h2>{{ collection.title }}</h2>
+        {% if collection.description != blank %}
+          <p>{{ collection.description }}</p>
+        {% endif %}
+      </div>
+
+      <div class="products-grid">
+        {% for product in collection.products %}
+          <div class="product-card">
+            <a href="{{ product.url }}" class="product-image">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {% else %}
+                <div class="placeholder-image">
+                  <span class="placeholder-text">NO IMAGE</span>
+                </div>
+              {% endif %}
+            </a>
+
+            <div class="product-info">
+              <h3 class="product-name">{{ product.title }}</h3>
+              <p class="product-price">{{ product.price | money }}</p>
+
+              <button
+                class="add-to-cart"
+                data-product-id="{{ product.id }}"
+                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                {% unless product.available %}disabled{% endunless %}
+              >
+                {% if product.available %}
+                  ADD TO CART
+                {% else %}
+                  SOLD OUT
+                {% endif %}
+              </button>
+            </div>
+          </div>
+        {% else %}
+          <p>No products found in this collection.</p>
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="pagination">
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}" class="back-btn">← Previous</a>
+          {% endif %}
+
+          <span>Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}" class="cta-btn">Next →</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endpaginate %}

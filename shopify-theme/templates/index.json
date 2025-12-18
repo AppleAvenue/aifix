@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "title": "SOLE THEORY",
+        "subtitle": "Where Street Meets Elite",
+        "button_text": "SHOP NOW",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured_banner": {
+      "type": "featured-banner",
+      "settings": {
+        "tag_text": "New Drop",
+        "main_text": "Limited Edition Collection"
+      }
+    },
+    "featured_collection_1": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "PREMIUM COLLECTION",
+        "subheading": "Curated selection of the hottest streetwear sneakers",
+        "products_limit": 6,
+        "show_view_all": true
+      }
+    },
+    "featured_collection_2": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "STREETWEAR ESSENTIALS",
+        "subheading": "Complete your look with premium apparel",
+        "products_limit": 4,
+        "show_view_all": true
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "JOIN THE THEORY",
+        "subheading": "Get exclusive access to new drops and special offers",
+        "placeholder_text": "Enter your email",
+        "button_text": "SUBSCRIBE"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured_banner",
+    "featured_collection_1",
+    "featured_collection_2",
+    "newsletter"
+  ]
+}

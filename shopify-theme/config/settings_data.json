@@ -1,0 +1,9 @@
+{
+  "current": {
+    "color_primary": "#000000",
+    "color_secondary": "#ff0000",
+    "color_text_light": "#ffffff",
+    "color_text_dark": "#1a1a1a",
+    "container_max_width": 1400
+  }
+}
